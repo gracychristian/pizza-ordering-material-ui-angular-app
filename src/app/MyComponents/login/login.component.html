@@ -1,0 +1,46 @@
+<div class="container">
+  <div id="login-box">
+    <div class="left text-center">
+      <h1>Log In</h1>
+      <input matInput type="text" name="username" placeholder="Username" />
+      <input matInput type="text" name="email" placeholder="E-mail" />
+      <input matInput type="password" name="password" placeholder="Password" />
+      <input
+        matInput
+        type="password"
+        name="password2"
+        placeholder="Re-Enter password"
+      />
+      <input type="submit" name="signup_submit" value="Log In" />
+    </div>
+
+    <div class="right">
+      <span class="loginwith text-center">Sign in with social network</span>
+      <button
+        mat-raised-button
+        routerLink="/home"
+        (click)="loginWithGoogle()"
+        class="social-signin google"
+      >
+        Log in with Google
+      </button>
+      <button
+        mat-raised-button
+        routerLink="/home"
+        (click)="loginWithFacebook()"
+        class="social-signin google"
+      >
+        Log in with Facebook
+      </button>
+      <button
+        mat-raised-button
+        routerLink="../"
+        (click)="logOut()"
+        class="social-signin google"
+      >
+        Log Out
+      </button>
+    </div>
+    <!-- <div class="or">OR</div> -->
+  </div>
+</div>

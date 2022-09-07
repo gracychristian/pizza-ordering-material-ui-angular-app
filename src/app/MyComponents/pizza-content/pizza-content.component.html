@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <mat-card class="example-card " *ngFor="let piz of pizzas">
+          <div  >
+              <img mat-card-image src="{{piz.img}}">
+              <mat-card-title>{{ piz.id }}. {{ piz.name }}</mat-card-title>
+              <mat-card-subtitle>Price: ₹{{ piz.price }}</mat-card-subtitle>
+              <mat-card-subtitle>Popularity: {{ piz.popularity }}</mat-card-subtitle>
+            </div>
+            <mat-card-actions>
+              <button mat-raised-button  color="primary" (click)="triggerModal(piz)">Add to cart</button>
+            </mat-card-actions>
+          </mat-card>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+.example-card {
+    max-width: 280px;
+    margin-bottom: 50px;
+    float: left;
+}
+.container{
+    margin-top: 50px;
+    max-width: 1200px;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 100px;
+    justify-content: space-between;
+}

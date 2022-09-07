@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="mt-5">
+    <button mat-raised-button routerLink="/home" color="accent">
+      <mat-icon>chevron_left</mat-icon>Continue Shopping
+    </button>
+    <table mat-table class="mat-elevation-z8 table table-bordered mt-3">
+      <thead>
+        <tr mat-header-cell style="font-weight: bold">
+          <th mat-cell>Product</th>
+          <th mat-cell>Name</th>
+          <th mat-cell>Price</th>
+          <td mat-cell>Topping</td>
+          <td mat-cell>Topping Price</td>
+          <th mat-cell>Quantity</th>
+          <th mat-cell>Subtotal</th>
+          <th mat-cell>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <div *ngIf="getCartDetails.length === 0">
+          <h3 class="mt-5 text-center">
+            Opps Empty Cart!!<i
+              class="fa fa-shopping-cart"
+              aria-hidden="true"
+            ></i>
+          </h3>
+        </div>
+        <tr *ngFor="let gcd of getCartDetails; let x=index">
+          <td mat-cell>
+            <img
+              mat-card-image
+              class="imgs"
+              src="{{ gcd.img }}"
+              alt="Photo of a Shiba Inu"
+            />
+          </td>
+          <td mat-cell>{{ gcd.name }}</td>
+          <td mat-cell>{{ gcd.price }}</td>
+          <td mat-cell>{{ gcd.top.topping.name }}</td>
+          <td mat-cell>{{ gcd.top.topping.price }}</td>
+          <td mat-cell>
+            <button
+              mat-icon-button
+              color="warn"
+              (click)="decQnt(gcd.id, gcd.quant)"
+            >
+              <mat-icon>remove</mat-icon>
+            </button>
+            <span>{{ gcd.quant }}</span>
+            <button
+              mat-icon-button
+              color="warn"
+              (click)="incQnt(gcd.id, gcd.quant)"
+              aria-label="Example icon button with a home icon"
+            >
+              <mat-icon>add</mat-icon>
+            </button>
+          </td>
+          <td mat-cell>₹ {{(gcd.price+gcd.top.topping.price) * gcd.quant | number }}</td>
+          <td mat-cell>
+            <button
+              mat-icon-button
+              color="warn"
+              (click)="deleteItem(gcd)"
+              aria-label="Example icon button with a heart icon"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr *ngIf="getCartDetails.length > 0">
+          <td mat-cell colspan="9" class="text-center">
+            <strong>Total: ₹ {{ total }}</strong>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+    <a mat-raised-button color="primary" class="m-3" (click)="stripePay(total)"
+      >Pay via Stripe</a
+    >
+    <a mat-raised-button color="primary" class="m-3" (click)="razPay(total)"
+      >Pay via RazorPay</a
+    >
+  </div>
+</div>
